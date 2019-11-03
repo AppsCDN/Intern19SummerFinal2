@@ -9,4 +9,4 @@ object FormatDate {
     const val MILLIS_IN_SECOND = 1000
 }
 
-fun Long.formatDefaultFromSeconds(): String = DATE_FORMAT.format(Date(FormatDate.MILLIS_IN_SECOND * this))
+fun Long.formatDate(): String = DATE_FORMAT.format(Date(FormatDate.MILLIS_IN_SECOND * this))
