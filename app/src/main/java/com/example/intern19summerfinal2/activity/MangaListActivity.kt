@@ -1,6 +1,12 @@
 package com.example.intern19summerfinal2.activity
 
+import android.annotation.SuppressLint
+import android.app.SearchManager
+import android.content.Context
 import android.os.Bundle
+import android.util.Log
+import android.view.Menu
+import android.widget.SearchView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -17,9 +23,16 @@ import retrofit2.Response
 
 @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS", "CAST_NEVER_SUCCEEDS")
 class MangaListActivity : AppCompatActivity() {
+    private lateinit var mangaAdapter: MangaAdapter
+    private lateinit var searchManager: SearchManager
+
+    private lateinit var searchView: SearchView
+    private var isSearching = false
+    private var searchText: String = ""
 
     private var mangaAPI: MangaAPI? = null
     var mangaList = mutableListOf<Manga>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_manga_list)
@@ -41,12 +54,51 @@ class MangaListActivity : AppCompatActivity() {
                         }
                     }
                 }
-                val mangaAdapter = MangaAdapter(mangaList)
-                recyclerViewMangaList.layoutManager = LinearLayoutManager(this@MangaListActivity, LinearLayoutManager.VERTICAL, false)
-                recyclerViewMangaList.setHasFixedSize(true)
-                recyclerViewMangaList.adapter = mangaAdapter
-                mangaAdapter.notifyDataSetChanged()
+                recyclerViewManga()
             }
         })
+    }
+
+    fun recyclerViewManga() {
+        mangaAdapter = MangaAdapter(mangaList)
+        recyclerViewMangaList.layoutManager = LinearLayoutManager(this@MangaListActivity, LinearLayoutManager.VERTICAL, false)
+        recyclerViewMangaList.setHasFixedSize(true)
+        recyclerViewMangaList.adapter = mangaAdapter
+        mangaAdapter.notifyDataSetChanged()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.search_manga_list, menu)
+        val menuItem = menu?.findItem(R.id.action_search)
+        searchManager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
+        Log.d("searchservice", "" + getSystemService(Context.SEARCH_SERVICE))
+        searchView = menuItem?.actionView as SearchView
+        searchView.maxWidth = Int.MAX_VALUE
+        if (isSearching) {
+            menuItem.expandActionView()
+            searchView.setQuery(searchText, true)
+            searchView.isIconified = false
+        }
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            @SuppressLint("DefaultLocale")
+            override fun onQueryTextChange(newText: String?): Boolean {
+                val text = newText?.toLowerCase()
+                val filteredList= mutableListOf<Manga>()
+                for (item: Manga in mangaList) {
+                    val search = item.title?.toLowerCase()
+                    if (search != null) {
+                        if (search.contains(text.toString()))
+                            filteredList.add(item)
+                    }
+                }
+                mangaAdapter.setSearchOperation(filteredList)
+                return true
+            }
+        })
+        return true
     }
 }

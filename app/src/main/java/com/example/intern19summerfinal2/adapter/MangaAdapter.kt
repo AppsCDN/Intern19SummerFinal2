@@ -12,7 +12,7 @@ import com.example.intern19summerfinal2.utils.formatDate
 import com.squareup.picasso.Picasso
 import kotlinx.android.extensions.LayoutContainer
 
-class MangaAdapter(private val listManga: List<Manga>) : RecyclerView.Adapter<MangaAdapter.ViewHolder>() {
+class MangaAdapter(private var listManga: MutableList<Manga>) : RecyclerView.Adapter<MangaAdapter.ViewHolder>() {
     companion object{
         private const val IMAGE_URL = "https://cdn.mangaeden.com/mangasimg/"
     }
@@ -50,5 +50,11 @@ class MangaAdapter(private val listManga: List<Manga>) : RecyclerView.Adapter<Ma
             tvMangaRatingNumber.text = mangaItem.hits.toString()
             tvMangaDate.text = mangaItem.lastChapterDate.formatDate()
         }
+    }
+
+    fun setSearchOperation(filterList: List<Manga>) {
+        listManga = mutableListOf()
+        listManga.addAll(filterList)
+        notifyDataSetChanged()
     }
 }
