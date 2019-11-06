@@ -49,11 +49,15 @@ class MangaAdapter(private var listManga: MutableList<Manga>) : RecyclerView.Ada
             tvMangaTitle.text = mangaItem.title
             tvMangaRatingNumber.text = mangaItem.hits.toString()
             tvMangaDate.text = mangaItem.lastChapterDate.formatDate()
+
+//            sort date
+            listManga.sortWith(Comparator { p0, p1 -> p1.lastChapterDate.formatDate().compareTo(p0.lastChapterDate.formatDate()) })
         }
     }
 
     fun setSearchOperation(filterList: List<Manga>) {
         listManga = mutableListOf()
+        listManga.clear()
         listManga.addAll(filterList)
         notifyDataSetChanged()
     }

@@ -6,6 +6,7 @@ import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
+import android.view.View
 import android.widget.SearchView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -23,6 +24,7 @@ import retrofit2.Response
 
 @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS", "CAST_NEVER_SUCCEEDS")
 class MangaListActivity : AppCompatActivity() {
+
     private lateinit var mangaAdapter: MangaAdapter
     private lateinit var searchManager: SearchManager
 
@@ -36,6 +38,8 @@ class MangaListActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_manga_list)
+
+        initSwipeRefreshLayout()
 
         mangaAPI = APIClient.getClient()
         val call = mangaAPI?.getResponse()
@@ -54,6 +58,7 @@ class MangaListActivity : AppCompatActivity() {
                         }
                     }
                 }
+                progressBar.visibility = View.GONE
                 recyclerViewManga()
             }
         })
@@ -85,13 +90,13 @@ class MangaListActivity : AppCompatActivity() {
             }
 
             @SuppressLint("DefaultLocale")
-            override fun onQueryTextChange(newText: String?): Boolean {
-                val text = newText?.toLowerCase()
+            override fun onQueryTextChange(text: String?): Boolean {
+                val newText = text?.toLowerCase()
                 val filteredList= mutableListOf<Manga>()
                 for (item: Manga in mangaList) {
                     val search = item.title?.toLowerCase()
                     if (search != null) {
-                        if (search.contains(text.toString()))
+                        if (search.contains(newText.toString()))
                             filteredList.add(item)
                     }
                 }
@@ -99,6 +104,25 @@ class MangaListActivity : AppCompatActivity() {
                 return true
             }
         })
+
+        searchView.setOnSearchClickListener { swipeRefreshLayout.isEnabled = false }
+
+        searchView.setOnCloseListener {
+            swipeRefreshLayout.isEnabled = true
+            false
+        }
         return true
+    }
+
+    private fun initSwipeRefreshLayout() {
+        swipeRefreshLayout.setColorSchemeResources(android.R.color.holo_blue_bright)
+        swipeRefreshLayout.setOnRefreshListener {
+            pullRefresh()
+        }
+    }
+
+    private fun pullRefresh() {
+        swipeRefreshLayout.isRefreshing = false
+        recyclerViewManga()
     }
 }
