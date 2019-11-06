@@ -5,7 +5,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 object FormatDate {
-    val DATE_FORMAT = SimpleDateFormat("dd.MM.yyyy", Locale.US)
+    val DATE_FORMAT = SimpleDateFormat("yyyy.MM.dd", Locale.US)
     const val MILLIS_IN_SECOND = 1000
 }
 
