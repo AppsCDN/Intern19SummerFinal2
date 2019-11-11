@@ -6,6 +6,7 @@ import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.SearchView
 import android.widget.Toast
@@ -16,15 +17,19 @@ import com.example.intern19summerfinal2.adapter.MangaAdapter
 import com.example.intern19summerfinal2.api.APIClient
 import com.example.intern19summerfinal2.model.Manga
 import com.example.intern19summerfinal2.model.MangaListResponse
-import com.example.intern19summerfinal2.utils.MangaAPI
+import com.example.intern19summerfinal2.api.MangaAPI
+import com.example.intern19summerfinal2.utils.OnItemClickListener
+import com.example.intern19summerfinal2.utils.formatDate
+import com.google.android.material.snackbar.Snackbar
+import kotlinx.android.synthetic.main.activity_manga_info_full.*
 import kotlinx.android.synthetic.main.activity_manga_list.*
+import kotlinx.android.synthetic.main.activity_manga_list.progressBar
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS", "CAST_NEVER_SUCCEEDS")
 class MangaListActivity : AppCompatActivity() {
-
     private lateinit var mangaAdapter: MangaAdapter
     private lateinit var searchManager: SearchManager
 
@@ -33,7 +38,7 @@ class MangaListActivity : AppCompatActivity() {
     private var searchText: String = ""
 
     private var mangaAPI: MangaAPI? = null
-    var mangaList = mutableListOf<Manga>()
+    private var mangaList = mutableListOf<Manga>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,7 +50,7 @@ class MangaListActivity : AppCompatActivity() {
         val call = mangaAPI?.getResponse()
         call?.enqueue(object : Callback<MangaListResponse> {
             override fun onFailure(call: Call<MangaListResponse>, t: Throwable) {
-                Toast.makeText(this@MangaListActivity, "Fail", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@MangaListActivity, t.message, Toast.LENGTH_SHORT).show()
             }
 
             override fun onResponse(call: Call<MangaListResponse>, response: Response<MangaListResponse>) {
@@ -59,17 +64,21 @@ class MangaListActivity : AppCompatActivity() {
                     }
                 }
                 progressBar.visibility = View.GONE
-                recyclerViewManga()
+                initAdapter()
             }
         })
     }
 
-    fun recyclerViewManga() {
-        mangaAdapter = MangaAdapter(mangaList)
-        recyclerViewMangaList.layoutManager = LinearLayoutManager(this@MangaListActivity, LinearLayoutManager.VERTICAL, false)
+    private fun initAdapter() {
+        mangaAdapter = MangaAdapter(mangaList, object : OnItemClickListener<Manga> {
+            override fun onItemClick(item: Manga) {
+                startActivity(MangaInfoFullActivity.newIntent(this@MangaListActivity, item.id ?: "", item.title ?: ""))
+            }
+        })
+        recyclerViewMangaList.layoutManager = LinearLayoutManager(this)
         recyclerViewMangaList.setHasFixedSize(true)
         recyclerViewMangaList.adapter = mangaAdapter
-        mangaAdapter.notifyDataSetChanged()
+        mangaList.sortWith(Comparator { p0, p1 -> p1.lastChapterDate.formatDate().compareTo(p0.lastChapterDate.formatDate()) })
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -123,6 +132,6 @@ class MangaListActivity : AppCompatActivity() {
 
     private fun pullRefresh() {
         swipeRefreshLayout.isRefreshing = false
-        recyclerViewManga()
+        mangaAdapter.notifyItemChanged(mangaList.size)
     }
 }

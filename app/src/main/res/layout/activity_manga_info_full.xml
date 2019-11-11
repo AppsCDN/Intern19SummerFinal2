@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/cardview_dark_background"
+    tools:context=".activity.MangaInfoFullActivity"
+    tools:ignore="PrivateResource">
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/mangaInfoFullContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        tools:visibility="visible">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusableInTouchMode="true"
+            android:paddingTop="@dimen/dp_16">
+
+            <ImageView
+                android:id="@+id/imgFullManga"
+                android:layout_width="@dimen/dp_140"
+                android:layout_height="@dimen/dp_170"
+                android:layout_alignParentTop="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/dp_8"
+                android:layout_marginEnd="@dimen/dp_8"
+                android:scaleType="centerInside"
+                android:src="@drawable/img_noimage"
+                tools:background="@android:color/white"
+                tools:ignore="ContentDescription" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@+id/tvMangaFullDescription"
+                android:layout_alignParentTop="true"
+                android:layout_marginEnd="@dimen/dp_8"
+                android:layout_marginRight="@dimen/dp_8"
+                android:layout_toEndOf="@id/imgFullManga"
+                android:layout_toRightOf="@id/imgFullManga"
+                android:gravity="center"
+                tools:ignore="RtlHardcoded">
+
+                <TextView
+                    android:id="@+id/tvMangaFullReleased"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginBottom="@dimen/dp_8"
+                    android:text="@string/textview_released" />
+
+                <TextView
+                    android:id="@+id/tvMangaFullReleasedDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginBottom="@dimen/dp_8"
+                    android:layout_toEndOf="@+id/tvMangaFullCategories"
+                    android:layout_toRightOf="@+id/tvMangaFullCategories"
+                    tools:text="2019.11.06" />
+
+                <TextView
+                    android:id="@+id/tvMangaFullRating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tvMangaFullReleased"
+                    android:layout_marginBottom="@dimen/dp_8"
+                    android:text="@string/textview_rating" />
+
+                <TextView
+                    android:id="@+id/tvMangaFullRatingNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tvMangaFullReleased"
+                    android:layout_marginBottom="@dimen/dp_8"
+                    android:layout_toEndOf="@+id/tvMangaFullCategories"
+                    android:layout_toRightOf="@+id/tvMangaFullCategories"
+                    tools:text="10000" />
+
+                <TextView
+                    android:id="@+id/tvMangaFullAuthor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvMangaFullRatingNumber"
+                    android:layout_marginBottom="@dimen/dp_8"
+                    android:text="@string/textview_author" />
+
+                <TextView
+                    android:id="@+id/tvMangaFullAuthorName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvMangaFullRatingNumber"
+                    android:layout_marginBottom="@dimen/dp_8"
+                    android:layout_toEndOf="@+id/tvMangaFullCategories"
+                    android:layout_toRightOf="@+id/tvMangaFullCategories"
+                    tools:text="Name" />
+
+                <TextView
+                    android:id="@+id/tvMangaFullCategories"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvMangaFullAuthorName"
+                    android:layout_marginEnd="@dimen/dp_8"
+                    android:layout_marginRight="@dimen/dp_8"
+                    android:text="@string/textview_categories" />
+
+                <TextView
+                    android:id="@+id/tvMangaFullCategoriesName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvMangaFullAuthorName"
+                    android:layout_toEndOf="@+id/tvMangaFullCategories"
+                    android:layout_toRightOf="@+id/tvMangaFullCategories"
+                    tools:text="Category1, category2, category3, ..." />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tvMangaFullDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/imgFullManga"
+                android:layout_marginStart="@dimen/dp_16"
+                android:layout_marginTop="@dimen/dp_8"
+                android:layout_marginEnd="@dimen/dp_16"
+                tools:text="Description Description Description Description Description Description Description \n Description Description" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewChapterList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvMangaFullDescription"
+                android:layout_marginTop="@dimen/dp_8"
+                android:padding="@dimen/dp_8" />
+
+        </RelativeLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</FrameLayout>

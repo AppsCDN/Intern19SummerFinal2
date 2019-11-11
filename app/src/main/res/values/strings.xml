@@ -3,4 +3,7 @@
     <string name="title_search">Search</string>
     <string name="textview_rating">Rating: </string>
     <string name="textview_update">Update: </string>
+    <string name="textview_released">Released: </string>
+    <string name="textview_author">Author: </string>
+    <string name="textview_categories">Categories: </string>
 </resources>

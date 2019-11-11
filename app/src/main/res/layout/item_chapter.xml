@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/dp_5"
+    card_view:cardBackgroundColor="@android:color/darker_gray"
+    card_view:cardCornerRadius="@dimen/dp_5">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dp_12">
+
+        <TextView
+            android:id="@+id/tvMangaChapter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            tools:text="1" />
+
+        <TextView
+            android:id="@+id/tvMangaChapterTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/dp_8"
+            android:layout_marginRight="@dimen/dp_8"
+            android:layout_toStartOf="@+id/tvMangaChapterDateSub"
+            android:layout_toLeftOf="@+id/tvMangaChapterDateSub"
+            android:layout_toEndOf="@+id/tvMangaChapter"
+            android:layout_toRightOf="@+id/tvMangaChapter"
+            tools:ignore="RtlHardcoded"
+            tools:text="ChapterTitle" />
+
+        <TextView
+            android:id="@+id/tvMangaChapterDateSub"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            tools:ignore="RtlHardcoded"
+            tools:text="2019.11.06" />
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
