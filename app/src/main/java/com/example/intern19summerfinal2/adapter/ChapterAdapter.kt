@@ -7,10 +7,11 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.intern19summerfinal2.R
 import com.example.intern19summerfinal2.model.Chapter
+import com.example.intern19summerfinal2.utils.AdapterOnItemClickListener
 import com.example.intern19summerfinal2.utils.formatDate
 import kotlinx.android.extensions.LayoutContainer
 
-class ChapterAdapter(private var listChapter: MutableList<Chapter>) : RecyclerView.Adapter<ChapterAdapter.ViewHolder>() {
+class ChapterAdapter(private var listChapter: MutableList<Chapter>, private val listener: AdapterOnItemClickListener<Chapter>) : RecyclerView.Adapter<ChapterAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -23,7 +24,7 @@ class ChapterAdapter(private var listChapter: MutableList<Chapter>) : RecyclerVi
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(listChapter[position])
+        holder.bind(listChapter[position], listener)
     }
 
     inner class ViewHolder(override val containerView: View) : RecyclerView.ViewHolder(containerView), LayoutContainer {
@@ -31,12 +32,12 @@ class ChapterAdapter(private var listChapter: MutableList<Chapter>) : RecyclerVi
         private val tvMangaChapterTitle: TextView = containerView.findViewById(R.id.tvMangaChapterTitle)
         private val tvMangaChapterDateSub: TextView = containerView.findViewById(R.id.tvMangaChapterDateSub)
 
-        internal fun bind(chapterItem: Chapter) {
+        internal fun bind(chapterItem: Chapter, listener: AdapterOnItemClickListener<Chapter>) {
             tvMangaChapter.text = chapterItem.number.toString()
             tvMangaChapterTitle.text = chapterItem.title
             tvMangaChapterDateSub.text = chapterItem.date?.formatDate()
 
-//            itemView.setOnClickListener { listener.onItemClick(chapterItem) }
+            itemView.setOnClickListener { listener.onItemClick(chapterItem) }
         }
     }
 }

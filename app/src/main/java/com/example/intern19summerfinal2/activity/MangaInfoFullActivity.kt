@@ -17,6 +17,7 @@ import com.example.intern19summerfinal2.api.APIClient
 import com.example.intern19summerfinal2.api.MangaAPI
 import com.example.intern19summerfinal2.model.Chapter
 import com.example.intern19summerfinal2.model.MangaFullInfo
+import com.example.intern19summerfinal2.utils.AdapterOnItemClickListener
 import com.example.intern19summerfinal2.utils.formatDate
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_manga_info_full.*
@@ -118,7 +119,11 @@ class MangaInfoFullActivity() : AppCompatActivity() {
     }
 
     private fun initAdapter() {
-        chapterAdapter = ChapterAdapter(chapterList)
+        chapterAdapter = ChapterAdapter(chapterList, object : AdapterOnItemClickListener<Chapter> {
+            override fun onItemClick(item: Chapter) {
+                startActivity(ChapterPagesActivity.newIntent(this@MangaInfoFullActivity, item.id ?: "", item.title ?: ""))
+            }
+        })
         recyclerViewChapterList.layoutManager = LinearLayoutManager(this)
         recyclerViewChapterList.setHasFixedSize(true)
         recyclerViewChapterList.adapter = chapterAdapter

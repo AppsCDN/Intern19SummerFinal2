@@ -8,12 +8,12 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.intern19summerfinal2.R
 import com.example.intern19summerfinal2.model.Manga
-import com.example.intern19summerfinal2.utils.OnItemClickListener
+import com.example.intern19summerfinal2.utils.AdapterOnItemClickListener
 import com.example.intern19summerfinal2.utils.formatDate
 import com.squareup.picasso.Picasso
 import kotlinx.android.extensions.LayoutContainer
 
-class MangaAdapter(private var listManga: MutableList<Manga>, private val listener: OnItemClickListener<Manga>) : RecyclerView.Adapter<MangaAdapter.ViewHolder>() {
+class MangaAdapter(private var listManga: MutableList<Manga>, private val listener: AdapterOnItemClickListener<Manga>) : RecyclerView.Adapter<MangaAdapter.ViewHolder>() {
     companion object{
         private const val IMAGE_URL = "https://cdn.mangaeden.com/mangasimg/"
     }
@@ -38,7 +38,7 @@ class MangaAdapter(private var listManga: MutableList<Manga>, private val listen
         private val tvMangaDate: TextView = containerView.findViewById(R.id.tvMangaDate)
         private val imgManga: ImageView = containerView.findViewById(R.id.imgManga)
 
-        internal fun bind(mangaItem: Manga, listener: OnItemClickListener<Manga>) {
+        internal fun bind(mangaItem: Manga, listener: AdapterOnItemClickListener<Manga>) {
             val image = mangaItem.image
             image?.let {
                 Picasso.with(itemView.context)
