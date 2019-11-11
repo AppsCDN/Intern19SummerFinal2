@@ -1,6 +1,5 @@
 package com.example.intern19summerfinal2.api
 
-import com.example.intern19summerfinal2.utils.MangaAPI
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit

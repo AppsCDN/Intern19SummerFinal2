@@ -8,11 +8,12 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.intern19summerfinal2.R
 import com.example.intern19summerfinal2.model.Manga
+import com.example.intern19summerfinal2.utils.OnItemClickListener
 import com.example.intern19summerfinal2.utils.formatDate
 import com.squareup.picasso.Picasso
 import kotlinx.android.extensions.LayoutContainer
 
-class MangaAdapter(private var listManga: MutableList<Manga>) : RecyclerView.Adapter<MangaAdapter.ViewHolder>() {
+class MangaAdapter(private var listManga: MutableList<Manga>, private val listener: OnItemClickListener<Manga>) : RecyclerView.Adapter<MangaAdapter.ViewHolder>() {
     companion object{
         private const val IMAGE_URL = "https://cdn.mangaeden.com/mangasimg/"
     }
@@ -28,7 +29,7 @@ class MangaAdapter(private var listManga: MutableList<Manga>) : RecyclerView.Ada
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(listManga[position])
+        holder.bind(listManga[position], listener)
     }
 
     inner class ViewHolder(override val containerView: View) : RecyclerView.ViewHolder(containerView), LayoutContainer {
@@ -37,7 +38,7 @@ class MangaAdapter(private var listManga: MutableList<Manga>) : RecyclerView.Ada
         private val tvMangaDate: TextView = containerView.findViewById(R.id.tvMangaDate)
         private val imgManga: ImageView = containerView.findViewById(R.id.imgManga)
 
-        internal fun bind(mangaItem: Manga) {
+        internal fun bind(mangaItem: Manga, listener: OnItemClickListener<Manga>) {
             val image = mangaItem.image
             image?.let {
                 Picasso.with(itemView.context)
@@ -50,12 +51,11 @@ class MangaAdapter(private var listManga: MutableList<Manga>) : RecyclerView.Ada
             tvMangaRatingNumber.text = mangaItem.hits.toString()
             tvMangaDate.text = mangaItem.lastChapterDate.formatDate()
 
-//            sort date
-            listManga.sortWith(Comparator { p0, p1 -> p1.lastChapterDate.formatDate().compareTo(p0.lastChapterDate.formatDate()) })
+            itemView.setOnClickListener { listener.onItemClick(mangaItem) }
         }
     }
 
-    fun setSearchOperation(filterList: List<Manga>) {
+    fun setSearchOperation(filterList: MutableList<Manga>) {
         listManga = mutableListOf()
         listManga.clear()
         listManga.addAll(filterList)
