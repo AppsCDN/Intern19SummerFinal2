@@ -6,7 +6,6 @@ import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
-import android.view.MenuItem
 import android.view.View
 import android.widget.SearchView
 import android.widget.Toast
@@ -18,10 +17,8 @@ import com.example.intern19summerfinal2.api.APIClient
 import com.example.intern19summerfinal2.model.Manga
 import com.example.intern19summerfinal2.model.MangaListResponse
 import com.example.intern19summerfinal2.api.MangaAPI
-import com.example.intern19summerfinal2.utils.OnItemClickListener
+import com.example.intern19summerfinal2.utils.AdapterOnItemClickListener
 import com.example.intern19summerfinal2.utils.formatDate
-import com.google.android.material.snackbar.Snackbar
-import kotlinx.android.synthetic.main.activity_manga_info_full.*
 import kotlinx.android.synthetic.main.activity_manga_list.*
 import kotlinx.android.synthetic.main.activity_manga_list.progressBar
 import retrofit2.Call
@@ -70,7 +67,7 @@ class MangaListActivity : AppCompatActivity() {
     }
 
     private fun initAdapter() {
-        mangaAdapter = MangaAdapter(mangaList, object : OnItemClickListener<Manga> {
+        mangaAdapter = MangaAdapter(mangaList, object : AdapterOnItemClickListener<Manga> {
             override fun onItemClick(item: Manga) {
                 startActivity(MangaInfoFullActivity.newIntent(this@MangaListActivity, item.id ?: "", item.title ?: ""))
             }
