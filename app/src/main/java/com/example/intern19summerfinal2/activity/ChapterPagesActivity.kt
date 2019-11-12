@@ -1,5 +1,7 @@
 package com.example.intern19summerfinal2.activity
 
+import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -20,12 +22,15 @@ import retrofit2.Response
 
 class ChapterPagesActivity : AppCompatActivity() {
     private var pageAdapter: PageAdapter ?= null
-    private val pageList = mutableListOf<Page>()
+    private val pageList = arrayListOf<Page>()
     private var mangaAPI: MangaAPI ?= null
 
     companion object {
         private const val CHAPTER_ID_TAG = "ChapterID"
         private const val CHAPTER_TITLE_TAG = "ChapterTitle"
+
+        private const val ZOOM_ACTIVITY_REQUEST_CODE = 101
+        private const val POSITION_TAG = "position"
 
         fun newIntent(context: Context, chapterID: String, chapterTitle: String): Intent {
             val intent = Intent(context, ChapterPagesActivity::class.java)
@@ -66,7 +71,7 @@ class ChapterPagesActivity : AppCompatActivity() {
                                 when (j) {
                                     0 -> page?.number = gallery.toInt()
                                     1 -> page?.url = gallery
-                                    2 -> page?.weight = gallery.toInt()
+                                    2 -> page?.width = gallery.toInt()
                                     3 -> page?.height = gallery.toInt()
                                 }
                             }
@@ -76,16 +81,29 @@ class ChapterPagesActivity : AppCompatActivity() {
                 }
                 initAdapter()
             }
-
         })
     }
 
     private fun initAdapter() {
-        pageAdapter = PageAdapter(pageList)
+        pageAdapter = PageAdapter(pageList, object : PageAdapter.OnItemClickListener {
+            override fun onItemClick(page: Page, position: Int) {
+                startActivityForResult(ZoomActivity.newIntent(this@ChapterPagesActivity, pageList, position), ZOOM_ACTIVITY_REQUEST_CODE)
+            }
+        })
         val layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, true)
         layoutManager.stackFromEnd = true
         recyclerView.layoutManager = layoutManager
         recyclerView.itemAnimator = DefaultItemAnimator()
         recyclerView.adapter = pageAdapter
+    }
+
+    @SuppressLint("MissingSuperCall")
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (requestCode == ZOOM_ACTIVITY_REQUEST_CODE) {
+            if (resultCode == Activity.RESULT_OK) {
+                val position = data?.getIntExtra(POSITION_TAG, 0) ?: 0
+                recyclerView.scrollToPosition(position)
+            }
+        }
     }
 }

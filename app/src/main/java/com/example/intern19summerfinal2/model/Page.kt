@@ -3,7 +3,7 @@ package com.example.intern19summerfinal2.model
 import android.os.Parcel
 import android.os.Parcelable
 
-data class Page(var number: Int = 0, var url: String? = "", var weight: Int = 0, var height: Int = 0) : Parcelable {
+data class Page(var number: Int = 0, var url: String? = "", var width: Int = 0, var height: Int = 0) : Parcelable {
 
     constructor(parcel: Parcel) : this(
         parcel.readInt(),
@@ -15,7 +15,7 @@ data class Page(var number: Int = 0, var url: String? = "", var weight: Int = 0,
     override fun writeToParcel(parcel: Parcel?, flags: Int) {
         parcel?.writeInt(number)
         parcel?.writeString(url)
-        parcel?.writeInt(weight)
+        parcel?.writeInt(width)
         parcel?.writeInt(height)
     }
 
