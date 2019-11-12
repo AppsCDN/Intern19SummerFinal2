@@ -11,7 +11,7 @@ import com.example.intern19summerfinal2.R
 import com.example.intern19summerfinal2.model.Page
 import kotlinx.android.extensions.LayoutContainer
 
-class PageAdapter(private val listPage: MutableList<Page>) : RecyclerView.Adapter<PageAdapter.ViewHolder>() {
+open class PageAdapter(private val listPage: MutableList<Page>, private val listener: OnItemClickListener) : RecyclerView.Adapter<PageAdapter.ViewHolder>() {
     companion object {
         private const val IMAGE_URL = "https://cdn.mangaeden.com/mangasimg/"
     }
@@ -27,14 +27,14 @@ class PageAdapter(private val listPage: MutableList<Page>) : RecyclerView.Adapte
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(listPage[position])
+        holder.bind(listPage[position], listener)
     }
 
     inner class ViewHolder(override val containerView: View) :
         RecyclerView.ViewHolder(containerView), LayoutContainer {
         private val imgPage: ImageView = containerView.findViewById(R.id.imgPage)
 
-        fun bind(pageItem: Page) {
+        fun bind(pageItem: Page, listener: OnItemClickListener) {
             val preload = 0.25f
             val url = pageItem.url
             url?.let {
@@ -45,7 +45,7 @@ class PageAdapter(private val listPage: MutableList<Page>) : RecyclerView.Adapte
                     .diskCacheStrategy(DiskCacheStrategy.ALL)
                     .into(imgPage)
             }
-//            imgPage.setOnClickListener { listener.onItemClick(pageItem, adapterPosition) }
+            imgPage.setOnClickListener { listener.onItemClick(pageItem, adapterPosition) }
         }
     }
 
