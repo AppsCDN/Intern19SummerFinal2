@@ -18,6 +18,17 @@ class MangaAdapter(private var listManga: MutableList<Manga>, private val listen
         private const val IMAGE_URL = "https://cdn.mangaeden.com/mangasimg/"
     }
 
+//    fun setData(manga: MutableList<Manga>) {
+//        this.listManga = manga
+//    }
+
+    fun setCategories(manga: MutableList<Manga>) {
+        listManga = mutableListOf()
+        listManga.clear()
+        listManga.addAll(manga)
+        notifyDataSetChanged()
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val view = inflater.inflate(R.layout.item_manga, parent, false)

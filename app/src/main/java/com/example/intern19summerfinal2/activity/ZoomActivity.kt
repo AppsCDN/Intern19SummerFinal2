@@ -5,7 +5,6 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.intern19summerfinal2.R
 import com.example.intern19summerfinal2.adapter.ZoomAdapter
 import com.example.intern19summerfinal2.adapter.ZoomViewPager

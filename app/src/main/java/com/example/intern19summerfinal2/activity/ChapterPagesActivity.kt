@@ -51,7 +51,7 @@ class ChapterPagesActivity : AppCompatActivity() {
         loadPageChapter(chapterID)
     }
 
-    fun loadPageChapter(chapterId: String) {
+    private fun loadPageChapter(chapterId: String) {
         mangaAPI = APIClient.getClient()
         val call = mangaAPI?.getPageList(chapterId)
         call?.enqueue(object : Callback<PageListResponse> {
