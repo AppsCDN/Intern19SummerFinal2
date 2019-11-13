@@ -25,8 +25,8 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-@Suppress("UNCHECKED_CAST")
-class MangaInfoFullActivity() : AppCompatActivity() {
+@Suppress("UNCHECKED_CAST", "DEPRECATION")
+class MangaInfoFullActivity : AppCompatActivity() {
     private var chapterAdapter: ChapterAdapter? = null
     private var chapterList = mutableListOf<Chapter>()
     private var mangaAPI: MangaAPI? = null
@@ -60,7 +60,7 @@ class MangaInfoFullActivity() : AppCompatActivity() {
         supportActionBar?.title = mangaTitle
     }
 
-    fun loadMangaID(mangaID: String) {
+    private fun loadMangaID(mangaID: String) {
         mangaAPI = APIClient.getClient()
         val call = mangaAPI?.getMangaFullInfo(mangaID)
         call?.enqueue(object : Callback<MangaFullInfo> {

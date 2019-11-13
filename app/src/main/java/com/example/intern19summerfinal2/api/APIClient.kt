@@ -1,7 +1,5 @@
 package com.example.intern19summerfinal2.api
 
-import com.example.intern19summerfinal2.model.Page
-import com.google.gson.Gson
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit

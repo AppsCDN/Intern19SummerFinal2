@@ -6,4 +6,40 @@
     <string name="textview_released">Released: </string>
     <string name="textview_author">Author: </string>
     <string name="textview_categories">Categories: </string>
+
+    <string name="navigation_open">Open</string>
+    <string name="navigation_close">Close</string>
+
+    <string name="menu_categories">Categories</string>
+    <string name="menu_categories_all">All</string>
+    <string name="menu_categories_adult">Adult</string>
+    <string name="menu_categories_adventure">Adventure</string>
+    <string name="menu_categories_comedy">Comedy</string>
+    <string name="menu_categories_doujinshi">Doujinshi</string>
+    <string name="menu_categories_drama">Drama</string>
+    <string name="menu_categories_ecchi">Ecchi</string>
+    <string name="menu_categories_fantasy">Fantasy</string>
+    <string name="menu_categories_gender_bender">Gender Bender</string>
+    <string name="menu_categories_harem">Harem</string>
+    <string name="menu_categories_historical">Historical</string>
+    <string name="menu_categories_horror">Horror</string>
+    <string name="menu_categories_josei">Josei</string>
+    <string name="menu_categories_mature">Mature</string>
+    <string name="menu_categories_mecha">Mecha</string>
+    <string name="menu_categories_mystery">Mystery</string>
+    <string name="menu_categories_one_shot">One Shot</string>
+    <string name="menu_categories_psychological">Psychological</string>
+    <string name="menu_categories_romance">Romance</string>
+    <string name="menu_categories_school_life">School Life</string>
+    <string name="menu_categories_seinen">Seinen</string>
+    <string name="menu_categories_shoujo">Shoujo</string>
+    <string name="menu_categories_shounen">Shounen</string>
+    <string name="menu_categories_slice_of_life">Slice of Life</string>
+    <string name="menu_categories_smut">Smut</string>
+    <string name="menu_categories_sports">Sports</string>
+    <string name="menu_categories_supernatural">Supernatural</string>
+    <string name="menu_categories_tragedy">Tragedy</string>
+    <string name="menu_categories_webtoons">Webtoons</string>
+    <string name="menu_categories_yaoi">Yaoi</string>
+    <string name="menu_categories_yuri">Yuri</string>
 </resources>

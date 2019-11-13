@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="@string/menu_categories">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/all"
+                    android:title="@string/menu_categories_all" />
+                <item
+                    android:id="@+id/adult"
+                    android:title="@string/menu_categories_adult" />
+                <item
+                    android:id="@+id/adventure"
+                    android:title="@string/menu_categories_adventure" />
+                <item
+                    android:id="@+id/comedy"
+                    android:title="@string/menu_categories_comedy" />
+                <item
+                    android:id="@+id/doujinshi"
+                    android:title="@string/menu_categories_doujinshi" />
+                <item
+                    android:id="@+id/drama"
+                    android:title="@string/menu_categories_drama" />
+                <item
+                    android:id="@+id/ecchi"
+                    android:title="@string/menu_categories_ecchi" />
+                <item
+                    android:id="@+id/fantasy"
+                    android:title="@string/menu_categories_fantasy" />
+                <item
+                    android:id="@+id/gender_bender"
+                    android:title="@string/menu_categories_gender_bender" />
+                <item
+                    android:id="@+id/harem"
+                    android:title="@string/menu_categories_harem" />
+                <item
+                    android:id="@+id/historical"
+                    android:title="@string/menu_categories_historical" />
+                <item
+                    android:id="@+id/horror"
+                    android:title="@string/menu_categories_horror" />
+                <item
+                    android:id="@+id/josei"
+                    android:title="@string/menu_categories_josei" />
+                <item
+                    android:id="@+id/mature"
+                    android:title="@string/menu_categories_mature" />
+                <item
+                    android:id="@+id/mecha"
+                    android:title="@string/menu_categories_mecha" />
+                <item
+                    android:id="@+id/mystery"
+                    android:title="@string/menu_categories_mystery" />
+                <item
+                    android:id="@+id/one_shot"
+                    android:title="@string/menu_categories_one_shot" />
+                <item
+                    android:id="@+id/psychological"
+                    android:title="@string/menu_categories_psychological" />
+                <item
+                    android:id="@+id/romance"
+                    android:title="@string/menu_categories_romance" />
+                <item
+                    android:id="@+id/school_life"
+                    android:title="@string/menu_categories_school_life" />
+                <item
+                    android:id="@+id/seinen"
+                    android:title="@string/menu_categories_seinen" />
+                <item
+                    android:id="@+id/shoujo"
+                    android:title="@string/menu_categories_shoujo" />
+                <item
+                    android:id="@+id/shounen"
+                    android:title="@string/menu_categories_shounen" />
+                <item
+                    android:id="@+id/slice_of_life"
+                    android:title="@string/menu_categories_slice_of_life" />
+                <item
+                    android:id="@+id/smut"
+                    android:title="@string/menu_categories_smut" />
+                <item
+                    android:id="@+id/sports"
+                    android:title="@string/menu_categories_sports" />
+                <item
+                    android:id="@+id/supernatural"
+                    android:title="@string/menu_categories_supernatural" />
+                <item
+                    android:id="@+id/tragedy"
+                    android:title="@string/menu_categories_tragedy" />
+                <item
+                    android:id="@+id/webtoons"
+                    android:title="@string/menu_categories_webtoons" />
+                <item
+                    android:id="@+id/yaoi"
+                    android:title="@string/menu_categories_yaoi" />
+                <item
+                    android:id="@+id/yuri"
+                    android:title="@string/menu_categories_yuri" />
+            </group>
+        </menu>
+    </item>
+</menu>
