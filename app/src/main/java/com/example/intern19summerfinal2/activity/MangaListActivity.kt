@@ -177,157 +177,157 @@ class MangaListActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.all -> {
-                editor?.putString(KEY_CATEGORIES, "Intern19SummerFinal2")
+                editor?.putString(KEY_CATEGORIES, getString(R.string.app_name))
                 editor?.apply()
                 showCategoriesData()
             }
             R.id.adult -> {
-                editor?.putString(KEY_CATEGORIES, "Adult")
+                editor?.putString(KEY_CATEGORIES, getString(R.string.menu_categories_adult))
                 editor?.apply()
                 showCategoriesData()
             }
             R.id.adventure -> {
-                editor?.putString(KEY_CATEGORIES, "Adventure")
+                editor?.putString(KEY_CATEGORIES, getString(R.string.menu_categories_adventure))
                 editor?.apply()
                 showCategoriesData()
             }
             R.id.comedy -> {
-                editor?.putString(KEY_CATEGORIES, "Comedy")
+                editor?.putString(KEY_CATEGORIES, getString(R.string.menu_categories_comedy))
                 editor?.apply()
                 showCategoriesData()
             }
             R.id.doujinshi -> {
-                editor?.putString(KEY_CATEGORIES, "Doujinshi")
+                editor?.putString(KEY_CATEGORIES, getString(R.string.menu_categories_doujinshi))
                 editor?.apply()
                 showCategoriesData()
             }
             R.id.drama -> {
-                editor?.putString(KEY_CATEGORIES, "Drama")
+                editor?.putString(KEY_CATEGORIES, getString(R.string.menu_categories_drama))
                 editor?.apply()
                 showCategoriesData()
             }
             R.id.ecchi -> {
-                editor?.putString(KEY_CATEGORIES, "Ecchi")
+                editor?.putString(KEY_CATEGORIES, getString(R.string.menu_categories_ecchi))
                 editor?.apply()
                 showCategoriesData()
             }
             R.id.fantasy -> {
-                editor?.putString(KEY_CATEGORIES, "Fantasy")
+                editor?.putString(KEY_CATEGORIES, getString(R.string.menu_categories_fantasy))
                 editor?.apply()
                 showCategoriesData()
             }
             R.id.gender_bender -> {
-                editor?.putString(KEY_CATEGORIES, "Gender Bender")
+                editor?.putString(KEY_CATEGORIES, getString(R.string.menu_categories_gender_bender))
                 editor?.apply()
                 showCategoriesData()
             }
             R.id.harem -> {
-                editor?.putString(KEY_CATEGORIES, "Harem")
+                editor?.putString(KEY_CATEGORIES, getString(R.string.menu_categories_harem))
                 editor?.apply()
                 showCategoriesData()
             }
             R.id.historical -> {
-                editor?.putString(KEY_CATEGORIES, "Historical")
+                editor?.putString(KEY_CATEGORIES, getString(R.string.menu_categories_historical))
                 editor?.apply()
                 showCategoriesData()
             }
             R.id.horror -> {
-                editor?.putString(KEY_CATEGORIES, "Horror")
+                editor?.putString(KEY_CATEGORIES, getString(R.string.menu_categories_horror))
                 editor?.apply()
                 showCategoriesData()
             }
             R.id.josei -> {
-                editor?.putString(KEY_CATEGORIES, "Josei")
+                editor?.putString(KEY_CATEGORIES, getString(R.string.menu_categories_josei))
                 editor?.apply()
                 showCategoriesData()
             }
             R.id.mature -> {
-                editor?.putString(KEY_CATEGORIES, "Mature")
+                editor?.putString(KEY_CATEGORIES, getString(R.string.menu_categories_mature))
                 editor?.apply()
                 showCategoriesData()
             }
             R.id.mecha -> {
-                editor?.putString(KEY_CATEGORIES, "Mecha")
+                editor?.putString(KEY_CATEGORIES, getString(R.string.menu_categories_mecha))
                 editor?.apply()
                 showCategoriesData()
             }
             R.id.mystery -> {
-                editor?.putString(KEY_CATEGORIES, "Mystery")
+                editor?.putString(KEY_CATEGORIES, getString(R.string.menu_categories_mystery))
                 editor?.apply()
                 showCategoriesData()
             }
             R.id.one_shot -> {
-                editor?.putString(KEY_CATEGORIES, "One Shot")
+                editor?.putString(KEY_CATEGORIES, getString(R.string.menu_categories_one_shot))
                 editor?.apply()
                 showCategoriesData()
             }
             R.id.psychological -> {
-                editor?.putString(KEY_CATEGORIES, "Psychological")
+                editor?.putString(KEY_CATEGORIES, getString(R.string.menu_categories_psychological))
                 editor?.apply()
                 showCategoriesData()
             }
             R.id.romance -> {
-                editor?.putString(KEY_CATEGORIES, "Romance")
+                editor?.putString(KEY_CATEGORIES, getString(R.string.menu_categories_romance))
                 editor?.apply()
                 showCategoriesData()
             }
             R.id.school_life -> {
-                editor?.putString(KEY_CATEGORIES, "School Life")
+                editor?.putString(KEY_CATEGORIES, getString(R.string.menu_categories_school_life))
                 editor?.apply()
                 showCategoriesData()
             }
             R.id.seinen -> {
-                editor?.putString(KEY_CATEGORIES, "Seinen")
+                editor?.putString(KEY_CATEGORIES, getString(R.string.menu_categories_seinen))
                 editor?.apply()
                 showCategoriesData()
             }
             R.id.shoujo -> {
-                editor?.putString(KEY_CATEGORIES, "Shoujo")
+                editor?.putString(KEY_CATEGORIES, getString(R.string.menu_categories_shoujo))
                 editor?.apply()
                 showCategoriesData()
             }
             R.id.shounen -> {
-                editor?.putString(KEY_CATEGORIES, "Shounen")
+                editor?.putString(KEY_CATEGORIES, getString(R.string.menu_categories_shounen))
                 editor?.apply()
                 showCategoriesData()
             }
             R.id.slice_of_life -> {
-                editor?.putString(KEY_CATEGORIES, "Slice of Life")
+                editor?.putString(KEY_CATEGORIES, getString(R.string.menu_categories_slice_of_life))
                 editor?.apply()
                 showCategoriesData()
             }
             R.id.smut -> {
-                editor?.putString(KEY_CATEGORIES, "Smut")
+                editor?.putString(KEY_CATEGORIES, getString(R.string.menu_categories_smut))
                 editor?.apply()
                 showCategoriesData()
             }
             R.id.sports -> {
-                editor?.putString(KEY_CATEGORIES, "Sports")
+                editor?.putString(KEY_CATEGORIES, getString(R.string.menu_categories_sports))
                 editor?.apply()
                 showCategoriesData()
             }
             R.id.supernatural -> {
-                editor?.putString(KEY_CATEGORIES, "Supernatural")
+                editor?.putString(KEY_CATEGORIES, getString(R.string.menu_categories_supernatural))
                 editor?.apply()
                 showCategoriesData()
             }
             R.id.tragedy -> {
-                editor?.putString(KEY_CATEGORIES, "Tragedy")
+                editor?.putString(KEY_CATEGORIES, getString(R.string.menu_categories_tragedy))
                 editor?.apply()
                 showCategoriesData()
             }
             R.id.webtoons -> {
-                editor?.putString(KEY_CATEGORIES, "Webtoons")
+                editor?.putString(KEY_CATEGORIES, getString(R.string.menu_categories_webtoons))
                 editor?.apply()
                 showCategoriesData()
             }
             R.id.yaoi -> {
-                editor?.putString(KEY_CATEGORIES, "Yaoi")
+                editor?.putString(KEY_CATEGORIES, getString(R.string.menu_categories_yaoi))
                 editor?.apply()
                 showCategoriesData()
             }
             R.id.yuri -> {
-                editor?.putString(KEY_CATEGORIES, "Yuri")
+                editor?.putString(KEY_CATEGORIES, getString(R.string.menu_categories_yuri))
                 editor?.apply()
                 showCategoriesData()
             }
@@ -337,8 +337,8 @@ class MangaListActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
     }
 
     private fun showCategoriesData() {
-        val categories = categoriesPreferences.getString(KEY_CATEGORIES, "Intern19SummerFinal2")
-        if (categories == "Intern19SummerFinal2") {
+        val categories = categoriesPreferences.getString(KEY_CATEGORIES, getString(R.string.app_name))
+        if (categories == getString(R.string.app_name)) {
             supportActionBar?.title = categories
             mangaAdapter.setCategories(mangaList)
         } else {
