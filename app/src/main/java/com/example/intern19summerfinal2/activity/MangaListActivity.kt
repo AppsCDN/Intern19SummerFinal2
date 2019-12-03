@@ -5,6 +5,7 @@ import android.app.SearchManager
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.Gravity
 import android.view.Menu
@@ -153,7 +154,7 @@ class MangaListActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
     }
 
     private fun pullRefresh() {
-        swipeRefreshLayout.isRefreshing = false
+        Handler().postDelayed({ swipeRefreshLayout.isRefreshing = false }, 3000)
         mangaAdapter.notifyItemChanged(mangaList.size)
     }
 
